@@ -9,6 +9,9 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@mantine/core": "^4.2.10",
+    "@mantine/hooks": "^4.2.10",
+    "@mantine/next": "^4.2.10",
     "@types/node": "^18.0.0",
     "@types/react": "^18.0.14",
     "firebase": "^9.1.3",

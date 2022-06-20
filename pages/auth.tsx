@@ -1,32 +1,30 @@
-import React from "react";
-import StyledFirebaseAuth from "react-firebaseui/StyledFirebaseAuth";
-import firebase from "../firebase/clientApp";
-
+import React from 'react'
+import StyledFirebaseAuth from 'react-firebaseui/StyledFirebaseAuth'
+import firebase from '../firebase/clientApp'
+import { Stack } from '@mantine/core'
 
 // Configure FirebaseUI.
 const uiConfig = {
-  // Redirect to / after sign in is successful. Alternatively you can provide a callbacks.signInSuccess function.
-  signInSuccessUrl: "/",
-  // We will display GitHub as auth providers.
-  signInOptions: [firebase.auth.EmailAuthProvider.PROVIDER_ID, firebase.auth.FacebookAuthProvider.PROVIDER_ID, firebase.auth.GoogleAuthProvider.PROVIDER_ID, firebase.auth.GithubAuthProvider.PROVIDER_ID],
-};
+
+  signInSuccessUrl: '/',
+  signInOptions: [
+    firebase.auth.FacebookAuthProvider.PROVIDER_ID,
+    firebase.auth.GoogleAuthProvider.PROVIDER_ID,
+    firebase.auth.GithubAuthProvider.PROVIDER_ID,
+  ],
+}
 
 function SignInScreen() {
   return (
-    <div
-      style={{
-        maxWidth: "320px",
-        display: "flex",
-        flexDirection: "column",
-        alignItems: "center",
-        justifyContent: "center",
-      }}
+    <Stack
+      align="center"
+      justify="flex-start"
+      spacing="sm"
     >
-      <h1>Pineapple Login</h1>
-      <p>Please sign-in:</p>
+      <h1>Film Bust</h1>
       <StyledFirebaseAuth uiConfig={uiConfig} firebaseAuth={firebase.auth()} />
-    </div>
-  );
+    </Stack>
+  )
 }
 
-export default SignInScreen;
+export default SignInScreen

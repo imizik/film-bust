@@ -17,12 +17,16 @@ export default function Homepage(props: Props) {
           <Link href="/auth" passHref>
             <Button>Sign in</Button>
           </Link>
-          <Button>Play as guest</Button>
+          <Link href="/game" passHref>
+            <Button>Play as guest</Button>
+          </Link>
           </>
         )}
         {user && (
           <>
-            <Button>Time to Guess</Button>
+            <Link href="/game" passHref>
+              <Button>Guess the movie</Button>
+            </Link>
             <Button onClick={signOut}>Sign Out</Button>
           </>
         )}

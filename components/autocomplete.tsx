@@ -1,13 +1,12 @@
 import { forwardRef, useState } from 'react';
-import { Button, Group, Avatar, Text, MantineColor, SelectItemProps, Autocomplete } from '@mantine/core';
-import Props from './gameComp'
+import { Center, Button, Group, Avatar, Text, MantineColor, SelectItemProps, Autocomplete } from '@mantine/core';
+import { useForm } from '@mantine/form';
+import {Props, currMovie} from '../utils/types'
+import transformData from '../utils/transformData'
 
-const transformData = (movies) => {
-  return movies.movies.map((item) => ({id: item.id, image: `https://image.tmdb.org/t/p/w500${item.backdrop_path}`, value: item.original_title }));
-}
-
-export default function Input(movies) {
+export default function Input({movies, handleSubmit}: Props, ) {
   const [selected, setSelected] = useState(null)
+  const form = useForm({ initialValues: { name: '' } });
   const data = transformData(movies)
 
   interface ItemProps extends SelectItemProps {
@@ -32,17 +31,28 @@ export default function Input(movies) {
 
   return (
     <>
-      <Autocomplete
-        placeholder="Select item before submitting"
-        itemComponent={AutoCompleteItem}
-        data={data}
-        filter={(value, item) =>
-          item.value.toLowerCase().includes(value.toLowerCase().trim())
-        }
-        onItemSubmit={(e) => setSelected(e)}
-        style={{ width: "500px" }}
-      />
-      <Button>Guess!</Button>
+      <form onSubmit={form.onSubmit(() => {
+        handleSubmit(selected)
+        form.reset()
+      })}>
+        <Center>
+          <Autocomplete
+            placeholder="Select item before submitting"
+            itemComponent={AutoCompleteItem}
+            data={data}
+            filter={(value, item) =>
+              item.value.toLowerCase().includes(value.toLowerCase().trim())
+            }
+            onItemSubmit={(e) => setSelected(e)}
+            style={{ width: "500px" }}
+            onChange={(event) => {form.setFieldValue('name', event)}}
+            value={form.values.name}
+            limit={15}
+          />
+          <Button type="submit">Guess!</Button>
+        </Center>
+      </form>
+
     </>
   );
 }

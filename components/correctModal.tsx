@@ -22,6 +22,7 @@ export default function CorrectModal({ user, opened, currMovie, resetGame }) {
   }, [opened, user])
 
   const data: userData[] = transformUser(userData)
+  console.log(userData)
 
   return (
       <Stack align="center" style={{width: '100vw', height: '80vh'}}>

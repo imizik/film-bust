@@ -20,6 +20,7 @@ export default async function handler(req, res) {
         6: 0,
         7: 0,
         8: 0,
+        'Bust': 0
       });
     }
     res.status(200).end();

@@ -1,7 +1,7 @@
 import { forwardRef, useState } from 'react';
 import { Center, Button, Group, Avatar, Text, MantineColor, SelectItemProps, Autocomplete } from '@mantine/core';
 import { useForm } from '@mantine/form';
-import {Props, currMovie} from '../utils/types'
+import {Props} from '../utils/types'
 import transformData from '../utils/transformData'
 
 export default function Input({movies, handleSubmit}: Props, ) {
@@ -16,8 +16,8 @@ export default function Input({movies, handleSubmit}: Props, ) {
   }
   // eslint-disable-next-line react/display-name
   const AutoCompleteItem = forwardRef<HTMLDivElement, ItemProps>(
-    ({value, image, ...others }: ItemProps, ref) => (
-      <div ref={ref} {...others}>
+    ({value, image, id, ...others }: ItemProps, ref) => (
+      <div ref={ref} {...others} key={id}>
         <Group noWrap>
           <Avatar src={image} />
 
@@ -48,9 +48,10 @@ export default function Input({movies, handleSubmit}: Props, ) {
             onChange={(event) => {form.setFieldValue('name', event)}}
             value={form.values.name}
             limit={15}
+            radius='xs'
             required
           />
-          <Button type="submit">Guess!</Button>
+          <Button type="submit" radius='xs' color='green'>Guess!</Button>
         </Center>
       </form>
 

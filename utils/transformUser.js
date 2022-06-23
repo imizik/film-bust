@@ -8,6 +8,7 @@ const transformUser = (userData) => {
     {name: '6', uv: userData[6], amt: userData[6]},
     {name: '7', uv: userData[7], amt: userData[7]},
     {name: '8', uv: userData[8], amt: userData[8]},
+    {name: 'Bust', uv: userData.Bust, amt: userData.Bust},
   ]
   return userArr
 }

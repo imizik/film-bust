@@ -1,6 +1,6 @@
-import Link from 'next/link';
-import { Button, Paper } from '@mantine/core';
-import { Stack } from '@mantine/core';
+import Link from 'next/link'
+import { Button, Paper, Text, Title, Group } from '@mantine/core'
+import { Stack } from '@mantine/core'
 import logoGif from '../gif/FILMBUST.gif'
 import Image from 'next/image'
 
@@ -14,25 +14,54 @@ export default function Homepage(props: Props) {
     <div>
       <Stack align="center" justify="flex-start" spacing="sm">
         <Paper shadow="md" radius="xl" p="xl" withBorder>
-          <Image src={logoGif} alt='loading' width={250} height={150} style={{marginTop: '5%'}}/>
+          <Image
+            src={logoGif}
+            alt="loading"
+            width={250}
+            height={150}
+            style={{ marginTop: '5%' }}
+          />
         </Paper>
+        <br />
+        <Title order={3}>Not sure what to watch tonight?</Title>
+        <Text size="sm">Get 8 tries to guess a top-rated movie!</Text>
+        <br/>
+        <br/>
         {!user && (
-          <>
-          <Link href="/game" passHref>
-            <Button size='xs' color="teal">Play as guest</Button>
-          </Link>
-          <Link href="/auth" passHref>
-            <Button size='xs'>Sign in</Button>
-          </Link>
-          </>
+          <Group style={{ gap: '0px', width: '35%' }}>
+            <Link href="/game" passHref>
+              <Button size="xs" color="gray" radius="xs" style={{ width: '50%' }}>
+                Play as guest
+              </Button>
+            </Link>
+            <Link href="/auth" passHref>
+              <Button size="xs" color="dark" radius="xs"
+              style={{ width: '50%' }}>Sign in</Button>
+            </Link>
+          </Group>
         )}
         {user && (
-          <>
+          <Group style={{ gap: '0px', width: '35%' }}>
             <Link href="/game" passHref>
-              <Button size='xs' color="teal">Guess the movie</Button>
+              <Button
+                radius="xs"
+                size="xs"
+                color="gray"
+                style={{ width: '50%' }}
+              >
+                Play Now
+              </Button>
             </Link>
-            <Button  size='xs' onClick={signOut}>Sign Out</Button>
-          </>
+            <Button
+              radius="xs"
+              style={{ width: '50%' }}
+              size="xs"
+              onClick={signOut}
+              color="dark"
+            >
+              Sign Out
+            </Button>
+          </Group>
         )}
       </Stack>
     </div>

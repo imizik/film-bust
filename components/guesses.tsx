@@ -1,4 +1,4 @@
-import { SimpleGrid, Stack, Group, Container, Image } from '@mantine/core'
+import { SimpleGrid, Stack, Group, Image } from '@mantine/core'
 import React from 'react'
 import numberWithCommas from '../utils/commas'
 import checker from '../utils/arrowCheck'
@@ -109,7 +109,6 @@ export default function guessList(list, currMovie) {
           <Group>
             <div
               style={{
-                width: '35%',
                 color: checker.runtimeColor(guess.runtime, currMovie.runtime),
                 fontSize: '0.8rem', width: '75%'
               }}

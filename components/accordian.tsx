@@ -29,9 +29,6 @@ export default function AccordionRules() {
       <Text size='xs'>For genres, arrows are for comparing the number of genres between the guess and the movie</Text>
     </Accordion.Item>
     <Accordion.Item label="Colors" style={{ fontSize: '0.8rem' }}>
-      {/* <div>
-        Budget: <Text size='xs' color='green'>ehrg</Text>
-      </div> */}
       <Table>
         <thead>
           <tr>
@@ -42,6 +39,11 @@ export default function AccordionRules() {
         </thead>
         <tbody>{tableData}</tbody>
       </Table>
+    </Accordion.Item>
+    <Accordion.Item label="Clues" style={{ fontSize: '0.8rem' }}>
+     <Text size='xs' weight={600}>Having trouble guessing?</Text>
+     <Text size='xs'>On 5th guess, click button on the top right to get the director&apos;s name</Text> <br/>
+     <Text size='xs'>On 7th guess, click button on the top right to get the name of the top 3 billed actors (animated movies might have different roles for cast)</Text>
     </Accordion.Item>
   </Accordion>
   )

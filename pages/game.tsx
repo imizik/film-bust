@@ -3,11 +3,11 @@ import { Stack, Button, Drawer } from '@mantine/core'
 import axios from 'axios'
 import movieData from '../utils/movieData.js'
 import GameComp from '../components/gameComp'
-import { Props, currMovie } from '../utils/types'
+import { currMovie } from '../utils/types'
 import AccordionRules from '../components/accordian'
 
 function GuesserGame() {
-  const [movies, setMovies] = useState<Array<currMovie>>(movieData)
+  const [movies] = useState<Array<currMovie>>(movieData)
   const [currMovie, setCurrMovie] = useState<currMovie>(movieData[0])
   const [gameReset, setGameReset] = useState<number>(0)
   const [opened, setOpened] = useState<boolean>(false)
@@ -32,7 +32,7 @@ function GuesserGame() {
   return (
     <>
       <Button
-        color="teal"
+        color="cyan"
         className="rules"
         size="xs"
         onClick={() => setOpened(true)}

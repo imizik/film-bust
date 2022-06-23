@@ -1,5 +1,5 @@
-import { Modal, Stack, Center } from '@mantine/core'
-import Link from 'next/link';
+import { Modal, Stack, Center, Paper } from '@mantine/core'
+import Link from 'next/link'
 import React, { useEffect, useState } from 'react'
 import Input from './autocomplete'
 import { Props, Selected } from '../utils/types'
@@ -8,6 +8,9 @@ import guessList from './guesses'
 import CorrectModal from './correctModal'
 import firebase from '../firebase/clientApp'
 import { useAuthState } from 'react-firebase-hooks/auth'
+import Clues from './clues'
+import logoGif from '../gif/FILMBUST.gif'
+import Image from 'next/image'
 
 export default function GameComp({
   movies,
@@ -58,7 +61,7 @@ export default function GameComp({
 
   const mappedGuesses = guessList(list, currMovie)
   useEffect(() => {
-    if (guessCount > 8) {
+    if (guessCount > 7) {
       setTitleString('BUST!!!')
       setTitleColor('red')
       setOpened(true)
@@ -67,21 +70,31 @@ export default function GameComp({
 
   return (
     <div>
+      <Clues
+        currMovie={currMovie}
+        guessCount={guessCount}
+        gameReset={gameReset}
+      />
       <Stack
         align="center"
         justify="flex-start"
         spacing="sm"
         style={{ width: '100%' }}
       >
-        <Link  href="/" passHref >
-          <h1 style={{cursor: 'pointer'}}>Film Bust</h1>
+        <Link href="/" passHref>
+          <Paper shadow="md" radius="xl" p="lg" withBorder style={{cursor: 'pointer'}}>
+            <Image
+              src={logoGif}
+              alt="loading"
+              width={150}
+              height={100}
+              style={{ marginTop: '5%' }}
+            />
+          </Paper>
         </Link>
+
         {movies && <Input movies={movies} handleSubmit={handleSubmit} />}
-        {guessCount < 9 ? (
-          <div>{guessCount} / 8</div>
-        ) : (
-          <div>8 / 8</div>
-        )}
+        {guessCount < 9 ? <div>{guessCount} / 8</div> : <div>8 / 8</div>}
         {mappedGuesses}
       </Stack>
       <Modal

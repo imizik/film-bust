@@ -61,7 +61,7 @@ export default function GameComp({
 
   const mappedGuesses = guessList(list, currMovie)
   useEffect(() => {
-    if (guessCount === 8) {
+    if (guessCount === 8 && user) {
       axios
       .post('api/stats/stats', { id: user.uid, count: 'Bust' })
       .then(() =>{

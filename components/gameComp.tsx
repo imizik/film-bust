@@ -56,12 +56,10 @@ export default function GameComp({
     const gameResetter = gameReset + 1
     setGameReset(gameResetter)
   }
-  console.log(currMovie)
-  console.log(list)
 
   const mappedGuesses = guessList(list, currMovie)
   useEffect(() => {
-    if (guessCount > 7) {
+    if (guessCount > 8) {
       setTitleString('BUST!!!')
       setTitleColor('red')
       setOpened(true)

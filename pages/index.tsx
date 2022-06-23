@@ -9,17 +9,6 @@ import { useEffect } from 'react';
 export default function Home() {
   const [user, loading, error] = useAuthState(firebase.auth());
 
-  console.log('loading: ', loading, '|', "curr user: ", user)
-
-  // const [scores, scoresLoading, scoresError] = useCollection(
-  //   firebase.firestore().collection('scores'),
-  //   {}
-  // );
-  // if (!scoresLoading && scores) {
-  //   scores.docs.map((doc) => console.log(doc.data()))
-  // }
-
-
   useEffect(() => {
     if (user && !loading) {
       axios.post(`/api/setStats/`, {user: user.uid})

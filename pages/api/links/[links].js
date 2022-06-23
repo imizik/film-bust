@@ -8,7 +8,6 @@ export default async function handler(req, res) {
     .then((result) => {
       let sendLink = '';
       for (let link of result.data.results) {
-        console.log(link)
         if (link.site === 'YouTube' && link.type === 'Trailer') {
           sendLink = link.key
         }

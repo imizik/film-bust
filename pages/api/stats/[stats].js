@@ -18,7 +18,6 @@ export default async function handler(req, res) {
 
   if (req.method === 'GET') {
     const {stats} = req.query
-    console.log(stats)
     try{
       var scoreRef = firebase.firestore().collection('scores').doc(stats);
       await scoreRef.get().then((doc) => {

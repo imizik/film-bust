@@ -14,6 +14,6 @@ export default async function handler(req, res) {
       }
       res.status(200).send(sendLink)
     })
-    .catch((err) => res.status(400).end())
+    .catch(() => res.status(400).end())
 
 }

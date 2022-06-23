@@ -23,7 +23,7 @@ export default function GameComp({
   const [opened, setOpened] = useState<boolean>(false)
   const [titleString, setTitleString] = useState<string>('You Won!')
   const [titleColor, setTitleColor] = useState<string>('green')
-  const [user] = useAuthState(firebase.auth())
+  const [user] = useAuthState<any>(firebase.auth())
 
   const handleSubmit = (selected: Selected) => {
     axios.post(`/api/getMovie/`, { id: selected.id }).then((res) => {

@@ -1,3 +1,5 @@
+import {Dispatch, SetStateAction} from 'react'
+
 export type currMovie = {
   adult: boolean
   backdrop_path: string
@@ -19,6 +21,7 @@ export interface Props {
   currMovie?: currMovie
   setCurrMovie?: Dispatch<SetStateAction<currMovie>>
   setGameReset?: Dispatch<SetStateAction<number>>
+  gameReset?: number
   movies?: Array<currMovie>
   handleSubmit?: (arg1: Selected) => void
 }
@@ -38,4 +41,10 @@ export type Selected = {
   video: boolean
   vote_average: number
   vote_count: number
+}
+
+export type userData ={
+  name: string
+  uv: number
+  amt: number
 }

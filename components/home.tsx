@@ -1,6 +1,8 @@
 import Link from 'next/link';
-import { Button } from '@mantine/core';
+import { Button, Paper } from '@mantine/core';
 import { Stack } from '@mantine/core';
+import logoGif from '../gif/FILMBUST.gif'
+import Image from 'next/image'
 
 interface Props {
   user: boolean
@@ -11,23 +13,25 @@ export default function Homepage(props: Props) {
   return (
     <div>
       <Stack align="center" justify="flex-start" spacing="sm">
-        <h1>Film Bust</h1>
+        <Paper shadow="md" radius="xl" p="xl" withBorder>
+          <Image src={logoGif} alt='loading' width={250} height={150} style={{marginTop: '5%'}}/>
+        </Paper>
         {!user && (
           <>
-          <Link href="/auth" passHref>
-            <Button>Sign in</Button>
-          </Link>
           <Link href="/game" passHref>
-            <Button>Play as guest</Button>
+            <Button size='xs' color="teal">Play as guest</Button>
+          </Link>
+          <Link href="/auth" passHref>
+            <Button size='xs'>Sign in</Button>
           </Link>
           </>
         )}
         {user && (
           <>
             <Link href="/game" passHref>
-              <Button>Guess the movie</Button>
+              <Button size='xs' color="teal">Guess the movie</Button>
             </Link>
-            <Button onClick={signOut}>Sign Out</Button>
+            <Button  size='xs' onClick={signOut}>Sign Out</Button>
           </>
         )}
       </Stack>

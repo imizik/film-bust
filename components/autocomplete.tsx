@@ -48,6 +48,7 @@ export default function Input({movies, handleSubmit}: Props, ) {
             onChange={(event) => {form.setFieldValue('name', event)}}
             value={form.values.name}
             limit={15}
+            required
           />
           <Button type="submit">Guess!</Button>
         </Center>

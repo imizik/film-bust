@@ -1,60 +1,112 @@
-import { Modal, Stack, } from '@mantine/core'
-import React, { Dispatch, SetStateAction, useState } from 'react'
+import { Modal, Stack, Center } from '@mantine/core'
+import Link from 'next/link';
+import React, { useEffect, useState } from 'react'
 import Input from './autocomplete'
 import { Props, Selected } from '../utils/types'
 import axios from 'axios'
 import guessList from './guesses'
 import CorrectModal from './correctModal'
-import firebase from "../firebase/clientApp";
-import {useAuthState} from 'react-firebase-hooks/auth';
+import firebase from '../firebase/clientApp'
+import { useAuthState } from 'react-firebase-hooks/auth'
 
 export default function GameComp({
   movies,
   currMovie,
-  setCurrMovie,
   setGameReset,
+  gameReset,
 }: Props) {
-
   const [list, setList] = useState([])
-  const [guessCount, setGuessCount] = useState(0)
-  const [opened, setOpened] = useState(false);
-  const [user] = useAuthState(firebase.auth());
+  const [guessCount, setGuessCount] = useState<number>(0)
+  const [opened, setOpened] = useState<boolean>(false)
+  const [titleString, setTitleString] = useState<string>('You Won!')
+  const [titleColor, setTitleColor] = useState<string>('green')
+  const [user] = useAuthState(firebase.auth())
 
   const handleSubmit = (selected: Selected) => {
     axios.post(`/api/getMovie/`, { id: selected.id }).then((res) => {
       const copyList = [...list]
       copyList.push(res.data)
-      const newCount = guessCount + 1
+      const newCount: number = guessCount + 1
       setList(copyList)
       setGuessCount(newCount)
       if (res.data.id === currMovie.id) {
-        handleStats()
-        setOpened(true)
+        if (user) {
+          handleStats()
+        } else {
+          setOpened(true)
+        }
       }
     })
   }
-
   const handleStats = () => {
-    axios.post('api/stats', {id: user.uid, count: guessCount + 1})
+    axios
+      .post('api/stats/stats', { id: user.uid, count: guessCount + 1 })
+      .then(() => setOpened(true))
+  }
+
+  const resetGame = () => {
+    setTitleColor('green')
+    setTitleString('You Won!')
+    setList([])
+    setGuessCount(0)
+    setOpened(false)
+    const gameResetter = gameReset + 1
+    setGameReset(gameResetter)
   }
   console.log(currMovie)
   console.log(list)
 
   const mappedGuesses = guessList(list, currMovie)
+  useEffect(() => {
+    if (guessCount > 8) {
+      setTitleString('BUST!!!')
+      setTitleColor('red')
+      setOpened(true)
+    }
+  }, [guessCount])
 
   return (
     <div>
-      <Stack align="center" justify="flex-start" spacing="sm" style={{ width: '100%' }}>
+      <Stack
+        align="center"
+        justify="flex-start"
+        spacing="sm"
+        style={{ width: '100%' }}
+      >
+        <Link  href="/" passHref >
+          <h1 style={{cursor: 'pointer'}}>Film Bust</h1>
+        </Link>
         {movies && <Input movies={movies} handleSubmit={handleSubmit} />}
-        <div>{guessCount} / 8</div>
+        {guessCount < 9 ? (
+          <div>{guessCount} / 8</div>
+        ) : (
+          <div>8 / 8</div>
+        )}
         {mappedGuesses}
       </Stack>
       <Modal
         opened={opened}
-        onClose={() => setOpened(false)}
-        title="You Won!"
+        onClose={() => {
+          setOpened(false)
+        }}
+        title={titleString}
+        centered={true}
+        styles={{
+          modal: { backgroundColor: '#152642' },
+          body: { backgroundColor: '#152642' },
+          title: { margin: '0 auto', color: titleColor },
+        }}
+        overlayOpacity={0.55}
+        overlayBlur={3}
       >
-        <CorrectModal user={user}/>
+        <Center>
+          <CorrectModal
+            user={user}
+            opened={opened}
+            currMovie={currMovie}
+            resetGame={resetGame}
+          />
+        </Center>
       </Modal>
     </div>
   )

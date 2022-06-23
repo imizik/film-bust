@@ -61,14 +61,20 @@ export default function GameComp({
 
   const mappedGuesses = guessList(list, currMovie)
   useEffect(() => {
-    if (guessCount === 8 && user) {
-      axios
-      .post('api/stats/stats', { id: user.uid, count: 'Bust' })
-      .then(() =>{
+    if (guessCount === 8) {
+      if (user) {
+        axios
+        .post('api/stats/stats', { id: user.uid, count: 'Bust' })
+        .then(() =>{
+          setTitleString('BUST!!!')
+          setTitleColor('red')
+          setOpened(true)
+        })
+      } else {
         setTitleString('BUST!!!')
         setTitleColor('red')
         setOpened(true)
-      })
+      }
     } else if (guessCount > 8) {
       setTitleString('BUST!!!')
       setTitleColor('red')

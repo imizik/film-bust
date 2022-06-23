@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import styles from '../styles/Home.module.css'
 import firebase from "../firebase/clientApp";
 import {useAuthState} from 'react-firebase-hooks/auth';
@@ -6,7 +7,8 @@ import axios from 'axios';
 import { useEffect } from 'react';
 
 export default function Home() {
-  const [user, loading] = useAuthState<any>(firebase.auth());
+  const auth = firebase.auth()
+  const [user, loading] = useAuthState((auth as any));
 
   useEffect(() => {
     if (user && !loading) {

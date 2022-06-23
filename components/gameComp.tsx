@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { Modal, Stack, Center, Paper } from '@mantine/core'
 import Link from 'next/link'
 import React, { useEffect, useState } from 'react'
@@ -18,12 +19,13 @@ export default function GameComp({
   setGameReset,
   gameReset,
 }: Props) {
+  const auth = firebase.auth()
   const [list, setList] = useState([])
   const [guessCount, setGuessCount] = useState<number>(0)
   const [opened, setOpened] = useState<boolean>(false)
   const [titleString, setTitleString] = useState<string>('You Won!')
   const [titleColor, setTitleColor] = useState<string>('green')
-  const [user] = useAuthState<any>(firebase.auth())
+  const [user] = useAuthState((auth as any))
 
   const handleSubmit = (selected: Selected) => {
     axios.post(`/api/getMovie/`, { id: selected.id }).then((res) => {
@@ -59,7 +61,15 @@ export default function GameComp({
 
   const mappedGuesses = guessList(list, currMovie)
   useEffect(() => {
-    if (guessCount > 8) {
+    if (guessCount === 8) {
+      axios
+      .post('api/stats/stats', { id: user.uid, count: 'Bust' })
+      .then(() =>{
+        setTitleString('BUST!!!')
+        setTitleColor('red')
+        setOpened(true)
+      })
+    } else if (guessCount > 8) {
       setTitleString('BUST!!!')
       setTitleColor('red')
       setOpened(true)

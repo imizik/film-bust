@@ -26,3 +26,58 @@ a {
   right: 25px;
   top: 10px;
 }
+
+.movieData {
+  font-size: 0.8rem;
+}
+
+@media (max-width: 621px) {
+  .movieData {
+    font-size: 0.5rem;
+  }
+
+}
+
+@media (max-width: 375px) {
+  .movieData {
+    font-size: 0.4rem;
+  }
+  .rules {
+    position: absolute;
+    left: 2px;
+    top: 15px;
+    width: 20%;
+  }
+  .clues {
+    position: absolute;
+    right: 2px;
+    top: 10px;
+  }
+
+}
+
+.autocomplete {
+  width: 50vw;
+}
+
+.homeButtons {
+  gap: 0px;
+  width: 35%;
+}
+
+@media (max-width: 557px) {
+  .homeButtons {
+    width: 75%;
+  }
+}
+
+@media (max-width: 398px) {
+  .homeButtons {
+    width: 75%;
+  }
+}
+
+.homeText {
+  margin: 0 auto;
+  text-align: center;
+}

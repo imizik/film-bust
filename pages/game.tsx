@@ -37,7 +37,7 @@ function GuesserGame() {
         size="xs"
         onClick={() => setOpened(true)}
       >
-        How To Play?
+        Rules
       </Button>
       <Drawer
         opened={opened}

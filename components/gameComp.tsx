@@ -28,7 +28,7 @@ export default function GameComp({
   const [user] = useAuthState((auth as any))
 
   const handleSubmit = (selected: Selected) => {
-    axios.post(`/api/getMovie/`, { id: selected.id }).then((res) => {
+    axios.post(`/api/getMovie/`, { id: selected?.id }).then((res) => {
       const copyList = [...list]
       copyList.push(res.data)
       const newCount: number = guessCount + 1
@@ -100,8 +100,8 @@ export default function GameComp({
             <Image
               src={logoGif}
               alt="loading"
-              width={150}
-              height={100}
+              width={125}
+              height={75}
               style={{ marginTop: '5%' }}
             />
           </Paper>

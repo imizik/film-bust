@@ -44,7 +44,7 @@ export default function Input({movies, handleSubmit}: Props, ) {
               item.value.toLowerCase().includes(value.toLowerCase().trim())
             }
             onItemSubmit={(e) => setSelected(e)}
-            style={{ width: "500px" }}
+            className='autocomplete'
             onChange={(event) => {form.setFieldValue('name', event)}}
             value={form.values.name}
             limit={15}

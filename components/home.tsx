@@ -23,12 +23,12 @@ export default function Homepage(props: Props) {
           />
         </Paper>
         <br />
-        <Title order={3}>Not sure what to watch tonight?</Title>
-        <Text size="sm">Get 8 tries to guess a top-rated movie!</Text>
+        <Title order={3} className='homeText'>Not sure what to watch tonight?</Title>
+        <Text size="sm" className='homeText'>Get 8 tries to guess a top-rated movie!</Text>
         <br/>
         <br/>
         {!user && (
-          <Group style={{ gap: '0px', width: '35%' }}>
+          <Group className='homeButtons'>
             <Link href="/game" passHref>
               <Button size="xs" color="gray" radius="xs" style={{ width: '50%' }}>
                 Play as guest
@@ -41,7 +41,7 @@ export default function Homepage(props: Props) {
           </Group>
         )}
         {user && (
-          <Group style={{ gap: '0px', width: '35%' }}>
+          <Group className='homeButtons'>
             <Link href="/game" passHref>
               <Button
                 radius="xs"

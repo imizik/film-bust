@@ -21,7 +21,6 @@ export default function Clues({ currMovie, guessCount, gameReset }) {
       .get(`/api/credits/${currMovie.id}`)
       .then((res) => setCredits(res.data))
   }, [currMovie])
-  console.log(credits)
 
   useEffect(() => {
    setVisible(true)

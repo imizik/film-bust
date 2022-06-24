@@ -28,7 +28,7 @@ export default function GameComp({
   const [user] = useAuthState((auth as any))
 
   const handleSubmit = (selected: Selected) => {
-    axios.post(`/api/getMovie/`, { id: selected?.id }).then((res) => {
+    axios.get(`/api/movies/${selected?.id}`).then((res) => {
       const copyList = [...list]
       copyList.push(res.data)
       const newCount: number = guessCount + 1

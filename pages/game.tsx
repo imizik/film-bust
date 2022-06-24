@@ -15,14 +15,14 @@ function GuesserGame() {
   useEffect(() => {
     // Below is to update list, do not want to update list every time as slows down app
     // axios
-    // .get('/api/getGames/')
+    // .get('/api/allmovies/')
     // .then((res) => {
     //   console.log(res)
     //   setMovies(res.data)
     // })
     const current = movies[Math.floor(Math.random() * (movies.length + 1))]
     axios
-      .post('/api/getMovie', { id: current.id })
+      .get(`/api/movies/${current.id}`)
       .then((res) => {
         setCurrMovie(res.data)
       })

@@ -33,14 +33,14 @@ a {
 
 @media (max-width: 621px) {
   .movieData {
-    font-size: 0.5rem;
+    font-size: 0.4rem;
   }
 
 }
 
 @media (max-width: 375px) {
   .movieData {
-    font-size: 0.4rem;
+    font-size: 0.3rem;
   }
   .rules {
     position: absolute;

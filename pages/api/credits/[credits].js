@@ -1,7 +1,6 @@
 import axios from 'axios'
 
 export default async function handler(req, res) {
-  console.log(req.query)
   await axios
     .get(
       `https://api.themoviedb.org/3/movie/${req.query.credits}/credits?api_key=${process.env.TMDBAPI}&language=en-US`

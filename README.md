@@ -5,16 +5,9 @@
 ![filmbust](https://user-images.githubusercontent.com/96801819/177012833-c56a2d0e-fddb-4266-944a-767b9842c054.gif)
 
 ## Table of Contents
-- [Description](#description)
 - [Installation](#installation-and-setup)
 - [Technologies](#technologies)
-- [Components](#components)
-- [Team Members](#contributors)
 
-## Description
-
-
----
 
 ## Installation and Setup
 1. Fork and clone the repo and navigate to the root directory.

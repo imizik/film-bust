@@ -2,6 +2,7 @@
 
 ## Overview
 
+![filmbust](https://user-images.githubusercontent.com/96801819/177012833-c56a2d0e-fddb-4266-944a-767b9842c054.gif)
 
 ## Table of Contents
 - [Description](#description)
@@ -39,12 +40,10 @@ npm run build
 ---
 
 ## Technologies
-
+- [Next.js](https://nextjs.org/)
+- [React](https://reactjs.org/)
+- [TypeScript](https://www.typescriptlang.org/)
+- [Firebase](https://firebase.google.com/)
+- [MantineUI](https://mantine.dev/)
 ---
-
-## Components
-
----
-
-### Contributors
 

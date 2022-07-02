@@ -1,8 +1,7 @@
-# Bark - Social Media for Dogs!
+# Film Bust - Movie Guessing Game!
 
 ## Overview
 
-<img src="./public/bark2.gif" alt="Project Overview GIF" width=70% height=auto>
 
 ## Table of Contents
 - [Description](#description)

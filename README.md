@@ -4,6 +4,12 @@
 
 ![filmbust](https://user-images.githubusercontent.com/96801819/177012833-c56a2d0e-fddb-4266-944a-767b9842c054.gif)
 
+## Description
+Is it late at night and you're still deciding on a movie to watch? Want to test your film knowledge? Play this game to guess a top-rated movie within 8 tries! Every guess submitted shows the user whether that movie's details are too high/low or are close or far from the movie that they are trying to guess. This app is completed and is playable at the link below!
+
+- [Film Bust](https://film-bust.vercel.app/)
+
+
 ## Table of Contents
 - [Installation](#installation-and-setup)
 - [Technologies](#technologies)
